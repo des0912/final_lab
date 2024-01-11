@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% load static %} {% block body %}
+
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-16">
+      <a href="{% url 'add-contact' %}"
+        ><button type="button" class="btn btn-light mb-3"><span class="material-symbols-outlined">
+          add
+          </span></button></a
+      >
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Student</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone No</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for contact in contact_list %}
+          <tr>
+            <td>{{ contact.id }}</td>
+            <td>{{ contact.student }}</td>
+            <td>{{ contact.email }}</td>
+            <td>{{ contact.phone_number }}</td>
+            <td>
+              <a href="{% url 'edit-contact' contact.id %}"
+                ><button type="button" class="btn btn-light"><span class="material-symbols-outlined">
+                  edit
+                  </span></button></a
+              >
+              <a href="{% url 'delete-contact' contact.id %}"
+                ><button type="button" class="btn btn-light"><span class="material-symbols-outlined">
+                  delete
+                  </span></button></a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block body %}
+<div class='container'>
+  <h2>Confirm Delete</h2> <br>
+  <strong>Are you sure you want to delete "{{item}}"?</strong>
+
+
+  <form class='mt-5' method="POST" action="">
+    {% csrf_token %}
+    <input class="btn btn-danger mt-3" type="submit" value='Confirm Delete' name="Confirm" /> <br>
+    <a class="btn btn-warning mt-3" href="{% url 'contact' %}">Cancel</a>
+  </form>
+</div>
+{% endblock %}
